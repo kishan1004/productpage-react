@@ -6,7 +6,7 @@ import Product6img from "../images/product6.jpeg";
 
 const Products = () => {
   return (
-    <section className="md:w-3/4 p-4 w-full">
+    <section className="md:w-3/4 p-4 w-full overflow-hidden">
       <p className="text-xs font-medium mb-4">Home / Products</p>
       <h1 className="text-xl font-bold mb-3">PRODUCTS</h1>
 
@@ -41,14 +41,12 @@ const Products = () => {
           />
         </div>
 
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-2">
+        <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
           {[
             "NEW",
             "SHIRT",
-            "POLO SHIRT",
             "SHORTS",
             "SUITS",
-            "BEST SELLERS",
             "T-SHIRTS",
             "JEANS",
             "JACKETS",

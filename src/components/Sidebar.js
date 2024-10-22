@@ -41,7 +41,7 @@ const Sidebar = () => {
       <aside
         className={`${
           isSidebarVisible ? "block" : "hidden"
-        } md:block md:w-1/4 p-4 lg:p-14 bg-white z-50 absolute top-0 left-0 h-full md:h-auto md:relative`}
+        } md:block md:w-1/4 pt-4 px-5  bg-white z-50 absolute top-0 left-0 h-full md:h-auto md:relative`}
       >
         <h3 className="text-xl font-bold mb-4">Filters</h3>
 

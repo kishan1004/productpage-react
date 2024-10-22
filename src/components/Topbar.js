@@ -8,7 +8,7 @@ const Topbar = () => {
   };
 
   return (
-    <header className="p-4 lg:p-14 flex justify-between items-center">
+    <header className="p-4 lg:p-10 flex justify-between items-center">
       <div className="flex items-center space-x-4 md:space-x-8">
         <button onClick={toggleMenu}>
           <svg
