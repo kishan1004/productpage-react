@@ -6,7 +6,7 @@ import Products from "./components/Products.js";
 
 function App() {
   return (
-    <div className="App font-beatrice">
+    <div className="App font-beatrice bg-gray-100">
       <Topbar />
       <div className="md:flex">
         <Sidebar />

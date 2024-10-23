@@ -6,7 +6,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="md:hidden flex justify-between items-center p-4">
+      <div className="md:hidden flex justify-between items-center p-4  bg-gray-100">
         <h3 className="text-xl font-bold">Filters</h3>
         <button onClick={() => setIsSidebarVisible(!isSidebarVisible)}>
           <svg
@@ -41,7 +41,7 @@ const Sidebar = () => {
       <aside
         className={`${
           isSidebarVisible ? "block" : "hidden"
-        } md:block md:w-1/4 pt-4 px-5  bg-white z-50 absolute top-0 left-0 h-full md:h-auto md:relative`}
+        } md:block md:w-1/4 pt-4 px-5  bg-gray-100 z-50 absolute top-0 left-0 h-full md:h-auto md:relative`}
       >
         <h3 className="text-xl font-bold mb-4">Filters</h3>
 
@@ -51,7 +51,7 @@ const Sidebar = () => {
             {["XS", "S", "M", "L", "XL", "2X"].map((size) => (
               <button
                 key={size}
-                className="border w-10 h-10 text-gray-600 hover:bg-gray-200 font-medium text-sm"
+                className="border border-gray-500 w-10 h-10 text-gray-600 hover:bg-gray-300 font-medium text-sm"
               >
                 {size}
               </button>

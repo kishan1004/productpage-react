@@ -6,7 +6,7 @@ import Product6img from "../images/product6.jpeg";
 
 const Products = () => {
   return (
-    <section className="md:w-3/4 p-4 w-full overflow-hidden">
+    <section className="md:w-3/4 p-4 w-full overflow-hidden  bg-gray-100">
       <p className="text-xs font-medium mb-4">Home / Products</p>
       <h1 className="text-xl font-bold mb-3">PRODUCTS</h1>
 
@@ -77,7 +77,11 @@ const Products = () => {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <h2 className="font-medium text-sm">Basic Slim Fit T-Shirt</h2>
+            <h2 className="font-medium text-sm">
+              <a href="https://stupendous-cranachan-15451e.netlify.app/">
+                Basic Slim Fit T-Shirt
+              </a>
+            </h2>
             <p className="text-gray-600">$199</p>
           </div>
         </div>
@@ -97,7 +101,11 @@ const Products = () => {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <h2 className="font-medium text-sm">Basic Heavy Fit T-Shirt</h2>
+            <h2 className="font-medium text-sm">
+              <a href="https://stupendous-cranachan-15451e.netlify.app/">
+                Basic Slim Fit T-Shirt
+              </a>
+            </h2>
             <p className="text-gray-600">$199</p>
           </div>
         </div>
@@ -115,7 +123,11 @@ const Products = () => {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <h2 className="font-medium text-sm">Basic Slim Fit T-Shirt</h2>
+            <h2 className="font-medium text-sm">
+              <a href="https://stupendous-cranachan-15451e.netlify.app/">
+                Basic Slim Fit T-Shirt
+              </a>
+            </h2>
             <p className="text-gray-600">$199</p>
           </div>
         </div>
@@ -133,7 +145,11 @@ const Products = () => {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <h2 className="font-medium text-sm">Basic Slim Fit T-Shirt</h2>
+            <h2 className="font-medium text-sm">
+              <a href="https://stupendous-cranachan-15451e.netlify.app/">
+                Basic Slim Fit T-Shirt
+              </a>
+            </h2>
             <p className="text-gray-600">$199</p>
           </div>
         </div>
@@ -151,7 +167,11 @@ const Products = () => {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <h2 className="font-medium text-sm">Basic Slim Fit T-Shirt</h2>
+            <h2 className="font-medium text-sm">
+              <a href="https://stupendous-cranachan-15451e.netlify.app/">
+                Basic Slim Fit T-Shirt
+              </a>
+            </h2>
             <p className="text-gray-600">$199</p>
           </div>
         </div>
@@ -169,7 +189,11 @@ const Products = () => {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <h2 className="font-medium text-sm">Basic Slim Fit T-Shirt</h2>
+            <h2 className="font-medium text-sm">
+              <a href="https://stupendous-cranachan-15451e.netlify.app/">
+                Basic Slim Fit T-Shirt
+              </a>
+            </h2>
             <p className="text-gray-600">$199</p>
           </div>
         </div>
