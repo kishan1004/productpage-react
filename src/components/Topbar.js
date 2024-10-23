@@ -39,7 +39,10 @@ const Topbar = () => {
           </svg>
         </button>
         <nav className="hidden md:flex space-x-4 md:space-x-8 font-medium text-sm">
-          <a href="/" className="text-gray-600 hover:text-black">
+          <a
+            href="https://famous-zabaione-ada841.netlify.app/"
+            className="text-gray-600 hover:text-black"
+          >
             Home
           </a>
           <a href="/" className="text-gray-600 hover:text-black">
@@ -148,7 +151,10 @@ const Topbar = () => {
       {isMenuOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden">
           <nav className="flex flex-col items-center space-y-4 p-4">
-            <a href="/" className="text-gray-600 hover:text-black">
+            <a
+              href="https://famous-zabaione-ada841.netlify.app/"
+              className="text-gray-600 hover:text-black"
+            >
               Home
             </a>
             <a href="/" className="text-gray-600 hover:text-black">
