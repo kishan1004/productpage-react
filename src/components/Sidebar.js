@@ -57,12 +57,97 @@ const Sidebar = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const [isColorDropdownOpen, setIsColorDropdownOpen] = useState(false);
+  const [selectedColors, setSelectedColors] = useState([]);
+
+  const colors = [
+    "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Black",
+    "White",
+    "Pink",
+    "Brown",
+    "Orange",
+  ];
+
+  const handleColorSelect = (color) => {
+    setSelectedColors((prevSelectedColors) =>
+      prevSelectedColors.includes(color)
+        ? prevSelectedColors.filter((c) => c !== color)
+        : [...prevSelectedColors, color]
+    );
+  };
+
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const categories = [
+    "SHIRT",
+    "SHORTS",
+    "SUITS",
+    "T-SHIRTS",
+    "JEANS",
+    "JACKETS",
+    "COATS",
+  ];
+
+  const handleCategoryToggle = (category) => {
+    setSelectedCategories(
+      (prevCategories) =>
+        prevCategories.includes(category)
+          ? prevCategories.filter((item) => item !== category) // Remove if already selected
+          : [...prevCategories, category] // Add if not selected
+    );
+  };
+
+  const [isTagDropdownOpen, setIsTagDropdownOpen] = useState(false);
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const tags = ["Top Rated", "Best Seller", "New Trend", "Classic"];
+
+  const handleTagToggle = (tag) => {
+    setSelectedTags(
+      (prevTags) =>
+        prevTags.includes(tag)
+          ? prevTags.filter((item) => item !== tag) // Remove if already selected
+          : [...prevTags, tag] // Add if not selected
+    );
+  };
+
+  const [isCollectionDropdownOpen, setIsCollectionDropdownOpen] =
+    useState(false);
+  const [selectedCollections, setSelectedCollections] = useState([]);
+
+  const collections = [
+    "Summer",
+    "Winter",
+    "Festival",
+    "Beach",
+    "Trekking",
+    "Sports",
+    "Coords",
+  ];
+
+  const handleCollectionToggle = (collection) => {
+    setSelectedCollections((prevCollections) =>
+      prevCollections.includes(collection)
+        ? prevCollections.filter((item) => item !== collection)
+        : [...prevCollections, collection]
+    );
+  };
+
   const handleClearAll = () => {
     setAvailabilityFilters({ available: false, outOfStock: false });
     setSelectedSize(null);
     setMinPrice(0);
     setMaxPrice(5000);
     setSelectedRatings([]);
+    setSelectedColors([]);
+    setSelectedCategories([]);
+    setSelectedTags([]);
+    setSelectedCollections([]);
   };
 
   const handleApply = () => {
@@ -72,12 +157,19 @@ const Sidebar = () => {
       minPrice,
       maxPrice,
       selectedRatings,
+      selectedColors,
+      selectedCategories,
+      selectedTags,
+      selectedCollections,
     });
   };
 
   return (
     <>
-      <div className="md:hidden flex justify-between items-center p-4  bg-gray-100">
+      <div
+        className="md:hidden flex justify-between items-center p-4  bg-gray-100"
+        onClick={() => setIsSidebarVisible(!isSidebarVisible)}
+      >
         <h3 className="text-xl font-bold">Filters</h3>
         <button onClick={() => setIsSidebarVisible(!isSidebarVisible)}>
           <svg
@@ -143,27 +235,29 @@ const Sidebar = () => {
         <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
 
         <div className="my-4">
-          <div className="my-4 flex items-center justify-between">
+          <div
+            className="my-4 flex items-center justify-between cursor-pointer"
+            onClick={() => setIsAvailabilityOpen(!isAvailabilityOpen)}
+          >
             <h4 className="font-bold text-sm">Availability</h4>
-            <button onClick={() => setIsAvailabilityOpen(!isAvailabilityOpen)}>
-              <svg
-                width="7"
-                height="11"
-                viewBox="0 0 7 11"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={`transform transition-transform ${
-                  isAvailabilityOpen ? "rotate-90" : "rotate-0"
-                }`}
-              >
-                <path
-                  d="M1 10L6 5.5L1 1"
-                  stroke="black"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+
+            <svg
+              width="7"
+              height="11"
+              viewBox="0 0 7 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`transform transition-transform ${
+                isAvailabilityOpen ? "rotate-90" : "rotate-0"
+              }`}
+            >
+              <path
+                d="M1 10L6 5.5L1 1"
+                stroke="black"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
 
           {isAvailabilityOpen && (
@@ -196,15 +290,21 @@ const Sidebar = () => {
 
         <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
 
-        <div className="my-4 flex items-center justify-between">
-          <h4 className="font-bold text-sm">Category</h4>
-          <button>
+        <div className="my-4">
+          <div
+            className="my-4 flex items-center justify-between cursor-pointer"
+            onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+          >
+            <h4 className="font-bold text-sm">Category</h4>
             <svg
               width="7"
               height="11"
               viewBox="0 0 7 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className={`transform transition-transform ${
+                isCategoryDropdownOpen ? "rotate-90" : ""
+              }`}
             >
               <path
                 d="M1 10L6 5.5L1 1"
@@ -213,55 +313,102 @@ const Sidebar = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
-        </div>
+          </div>
 
-        <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
-
-        <div className="my-4 flex items-center justify-between">
-          <h4 className="font-bold text-sm">Colors</h4>
-          <button>
-            <svg
-              width="7"
-              height="11"
-              viewBox="0 0 7 11"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 10L6 5.5L1 1"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+          {isCategoryDropdownOpen && (
+            <div className="flex flex-col space-y-2 mt-4 pl-4">
+              {categories.map((category) => (
+                <label key={category} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedCategories.includes(category)}
+                    onChange={() => handleCategoryToggle(category)}
+                    className="form-checkbox text-blue-500"
+                  />
+                  <span
+                    className={`text-sm ${
+                      selectedCategories.includes(category)
+                        ? "font-bold text-blue-500"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {category}
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
 
         <div className="my-4">
-          <div className="flex items-center justify-between">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => setIsColorDropdownOpen(!isColorDropdownOpen)}
+          >
+            <h4 className="font-bold text-sm">Colors</h4>
+            <svg
+              width="7"
+              height="11"
+              viewBox="0 0 7 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`transform transition-transform ${
+                isColorDropdownOpen ? "rotate-90" : ""
+              }`}
+            >
+              <path
+                d="M1 10L6 5.5L1 1"
+                stroke="black"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          {isColorDropdownOpen && (
+            <div className="flex flex-col space-y-2 mt-4 pl-4">
+              {colors.map((color) => (
+                <label key={color} className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={selectedColors.includes(color)}
+                    onChange={() => handleColorSelect(color)}
+                    className="form-checkbox h-4 w-4 text-gray-600 border-gray-300 rounded"
+                  />
+                  <span className="ml-2 text-sm">{color}</span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
+
+        <div className="my-4">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={toggleDropdown}
+          >
             <h4 className="font-bold text-sm">Price Range</h4>
-            <button onClick={toggleDropdown}>
-              <svg
-                width="7"
-                height="11"
-                viewBox="0 0 7 11"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={`transform transition-transform ${
-                  isOpen ? "rotate-90" : ""
-                }`}
-              >
-                <path
-                  d="M1 10L6 5.5L1 1"
-                  stroke="black"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+
+            <svg
+              width="7"
+              height="11"
+              viewBox="0 0 7 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`transform transition-transform ${
+                isOpen ? "rotate-90" : ""
+              }`}
+            >
+              <path
+                d="M1 10L6 5.5L1 1"
+                stroke="black"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
 
           {isOpen && (
@@ -311,51 +458,113 @@ const Sidebar = () => {
         </div>
         <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
 
-        <div className="my-4 flex items-center justify-between">
-          <h4 className="font-bold text-sm">Collections</h4>
-          <button>
+        <div className="my-4">
+          <div
+            className="my-4 flex items-center justify-between cursor-pointer"
+            onClick={() =>
+              setIsCollectionDropdownOpen(!isCollectionDropdownOpen)
+            }
+          >
+            <h4 className="font-bold text-sm">Collections</h4>
             <svg
               width="7"
               height="11"
               viewBox="0 0 7 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className={`transform transition-transform ${
+                isCollectionDropdownOpen ? "rotate-90" : ""
+              }`}
             >
               <path
                 d="M1 10L6 5.5L1 1"
                 stroke="black"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
-          </button>
+          </div>
+
+          {isCollectionDropdownOpen && (
+            <div className="flex flex-col space-y-2 mt-4 pl-4">
+              {collections.map((collection) => (
+                <label key={collection} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedCollections.includes(collection)}
+                    onChange={() => handleCollectionToggle(collection)}
+                    className="form-checkbox text-blue-500"
+                  />
+                  <span
+                    className={`text-sm ${
+                      selectedCollections.includes(collection)
+                        ? "font-bold text-blue-500"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {collection}
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
 
-        <div className="my-4 flex items-center justify-between">
-          <h4 className="font-bold text-sm">Tags</h4>
-          <button>
+        <div className="my-4">
+          <div
+            className="my-4 flex items-center justify-between cursor-pointer"
+            onClick={() => setIsTagDropdownOpen(!isTagDropdownOpen)}
+          >
+            <h4 className="font-bold text-sm">Tags</h4>
             <svg
               width="7"
               height="11"
               viewBox="0 0 7 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className={`transform transition-transform ${
+                isTagDropdownOpen ? "rotate-90" : ""
+              }`}
             >
               <path
                 d="M1 10L6 5.5L1 1"
                 stroke="black"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
-          </button>
+          </div>
+
+          {isTagDropdownOpen && (
+            <div className="flex flex-col space-y-2 mt-4 pl-4">
+              {tags.map((tag) => (
+                <label key={tag} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes(tag)}
+                    onChange={() => handleTagToggle(tag)}
+                    className="form-checkbox text-blue-500"
+                  />
+                  <span
+                    className={`text-sm ${
+                      selectedTags.includes(tag)
+                        ? "font-bold text-blue-500"
+                        : "text-gray-700"
+                    }`}
+                  >
+                    {tag}
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="border-t border-dotted border-gray-500 w-full my-4"></div>
 
-        <div className="mb-6">
+        <div className="my-4">
           <div
             className="flex items-center justify-between cursor-pointer"
             onClick={toggleDropdown2}
